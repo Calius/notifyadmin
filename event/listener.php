@@ -93,7 +93,7 @@ class listener implements EventSubscriberInterface
 
 	public function ucp_register_welcome_email_before($event)
 	{
-		if ($this->config['require_activation'] != USER_ACTIVATION_ADMIN)
+		if (in_array($this->config['require_activation'], array(USER_ACTIVATION_SELF, USER_ACTIVATION_ADMIN)))
 		{
 			// Get user_id
 			$this->user_id = $event['user_id'];
